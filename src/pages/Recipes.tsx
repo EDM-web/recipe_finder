@@ -24,7 +24,7 @@ const Recipes = () => {
     fetchRecipes();
   }, []);
   return (
-    <section className="px-8 py-8">
+    <section className="px-8 py-8 ">
       <h1 className="text-2xl font-bold text-gray-700 mb-6">All Recipes </h1>
 
       {loading && <p className="text-lg text-gray-500">Fetching Recipes...</p>}

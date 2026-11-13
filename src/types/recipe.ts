@@ -5,15 +5,17 @@ export type Recipe = {
   cuisine: string;
   ingredients: string[];
   instructions: string[];
-  difficulty: string;
+  difficulty: Difficulty;
   rating: number;
   mealType: MealType;
   reviewCount: number;
+  prepTimeMinutes: number;
+  cookTimeMinutes: number;
 };
 
-type MealType = {
-  mealType: "Breakfast" | "Lunch" | "Dinner";
-};
+type MealType = ("Breakfast" | "Lunch" | "Dinner")[];
+
+type Difficulty = "Easy" | "Medium";
 
 export type RecipeResponse = {
   recipes: Recipe[];

@@ -1,3 +1,4 @@
+import { NavLink } from "react-router";
 import type { Recipe } from "../../types/recipe";
 import { Star } from "lucide-react";
 
@@ -6,7 +7,10 @@ type RecipeCardProps = {
 };
 const RecipeCard = ({ recipe }: RecipeCardProps) => {
   return (
-    <div className=" border border-gray-200 rounded-xl space-y-0 transition-all duration-200 hover:-translate-y-1  hover:shadow-xl">
+    <NavLink
+      to={`/recipes/${recipe.id}`}
+      className=" border border-gray-200 rounded-xl space-y-0 transition-all duration-200 hover:-translate-y-1  hover:shadow-xl"
+    >
       <div className="relative ">
         <img
           src={recipe.image}
@@ -30,7 +34,7 @@ const RecipeCard = ({ recipe }: RecipeCardProps) => {
           </span>
         </div>
       </div>
-    </div>
+    </NavLink>
   );
 };
 

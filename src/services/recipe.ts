@@ -1,4 +1,4 @@
-import type { RecipeResponse } from "../types/recipe";
+import type { Recipe, RecipeResponse } from "../types/recipe";
 
 const API_URL = "https://dummyjson.com";
 
@@ -16,5 +16,22 @@ export const getRecipes = async () => {
   } catch (error: unknown) {
     console.log(error);
     throw new Error("Something went wrong at getRecipes");
+  }
+};
+
+export const getOneRecipe = async (id: string | undefined) => {
+  try {
+    const response = await fetch(`${API_URL}/recipes/${id}`);
+
+    if (!response.ok) {
+      throw new Error("Failed to fetch one recipe");
+    }
+
+    const data: Recipe = await response.json();
+
+    return data;
+  } catch (error) {
+    console.log(error);
+    throw new Error("Something went wrong.");
   }
 };
