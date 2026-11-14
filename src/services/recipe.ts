@@ -35,3 +35,22 @@ export const getOneRecipe = async (id: string | undefined) => {
     throw new Error("Something went wrong.");
   }
 };
+
+export const searchRecipe = async (searchName: string) => {
+  try {
+    const response = await fetch(
+      `${API_URL}/recipes/search?q=${encodeURIComponent(searchName)}`,
+    );
+
+    if (!response.ok) {
+      throw new Error("Failed to search recipes");
+    }
+
+    const data: RecipeResponse = await response.json();
+
+    return data.recipes;
+  } catch (error) {
+    console.log(error);
+    throw new Error("Something went wrong.");
+  }
+};
